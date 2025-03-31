@@ -1,26 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* custom colors */
+  --color-green-50: #30af5b;
+  --color-green-90: #292c27;
+  --color-gray-10: #eeeeee;
+  --color-gray-20: #a2a2a2;
+  --color-gray-30: #7b7b7b;
+  --color-gray-50: #585858;
+  --color-gray-90: #141414;
+  --color-orange-50: #ff814c;
+  --color-blue-70: #021639;
+  --color-yellow-50: #fec601;
+
+  --screen-xs: 400px;
+  --screen-3xl: 1680px;
+  --screen-4xl: 2200px;
+
+  --max-width-10xl: 1512px;
+
+  --radius-5xl: 40px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    font-family: "Inter", sans-serif;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* buttons */
+  .btn_white {
+    @apply border border-white bg-white px-8 py-3 text-green-50;
+  }
+  .btn_white_text {
+    @apply border border-white bg-white px-8 py-3 text-gray-90;
+  }
+  .btn_green {
+    @apply border border-green-50 bg-green-50 px-8 py-5 text-white;
+  }
+  .btn_dark_green {
+    @apply bg-green-90 px-8 py-4 text-white transition-all hover:bg-black;
+  }
+  .btn_dark_green_outline {
+    @apply border border-gray-20 bg-green-90 px-8 py-5 text-white;
+  }
+}
+
+@layer utilities {
+  .max-container {
+    @apply mx-auto max-w-[1440px];
+  }
+  .padding-container {
+    @apply px-6 lg:px-20;
+  }
+  .flexCenter {
+    @apply flex items-center justify-center;
+  }
+  .flexBetween {
+    @apply flex items-center justify-between;
+  }
+  .flexStart {
+    @apply flex items-center justify-start;
+  }
+  .flexEnd {
+    @apply flex items-center justify-end;
+  }
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
