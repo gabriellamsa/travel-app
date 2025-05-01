@@ -1,5 +1,7 @@
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline text-teal-500">Travel App</h1>
+    <main className="flex min-h-screen items-center justify-center bg-white">
+      <h1 className="text-4xl font-bold text-teal-600">Nomadoo -Travel App</h1>
+    </main>
   );
 }

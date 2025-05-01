@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/src/components/Navbar";
-import { Footer } from "@/src/components/Footer";
+
+const font = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Nomadoo",
@@ -15,10 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        <main className="relative overflow-hidden">{children}</main>
-        <Footer />
+      <body className={`${font.className} antialiased`}>
+        <main className="min-h-screen flex flex-col">{children}</main>
       </body>
     </html>
   );
