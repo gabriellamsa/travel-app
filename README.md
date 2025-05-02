@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✈️ Nomadoo - Travel App
+
+Nomadoo is a comprehensive travel planning application designed to help users organize all aspects of their trips in one place. From flights and accommodations to daily itineraries, Nomadoo serves as a centralized hub for travel organization.
+
+## Project Overview
+
+Nomadoo aims to simplify the travel planning process by eliminating the need to switch between multiple apps or booking sites. The application provides a structured task system that helps both novice travelers and professional tourists plan their trips effectively.
+
+### Key Features (Planned)
+
+- Trip itinerary management
+- Flight and hotel database integration
+- Calendar synchronization
+- Smart notifications
+- Activity recommendations storage and categorization
+
+## Development Status
+
+🚧 **This project is currently under development. The features and implementation details are subject to change as the project evolves.**
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technology Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js
+- TypeScript
+- Tailwind CSS
 
-## Learn More
+## Future Plans
 
-To learn more about Next.js, take a look at the following resources:
+- Integration with travel booking APIs
+- Partner program implementation
+- User feedback system
+- Mobile-responsive design
+- Multi-language support
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contributing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is in its early stages. Contributions and suggestions are welcome as we continue to develop and refine the application.
