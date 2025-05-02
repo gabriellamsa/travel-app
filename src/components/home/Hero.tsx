@@ -1,9 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+import SignInModal from "../common/SignInModal";
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
+
   return (
     <section className="bg-white w-full py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-16">
@@ -16,11 +21,12 @@ export default function Hero() {
             can organize flights, stays, activities, and itineraries — all in
             one smart, simple place.
           </p>
-          <Link href="/login">
-            <span className="inline-block bg-[var(--nomadoo-primary)] hover:bg-[#005c8e] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 cursor-pointer">
-              Start Planning
-            </span>
-          </Link>
+          <button
+            onClick={toggleModal}
+            className="inline-block bg-[var(--nomadoo-primary)] hover:bg-[#005c8e] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 cursor-pointer"
+          >
+            Start Planning
+          </button>
         </div>
 
         <div className="md:w-1/2 flex justify-center">
@@ -34,6 +40,8 @@ export default function Hero() {
           />
         </div>
       </div>
+
+      {isModalOpen && <SignInModal onClose={toggleModal} />}
     </section>
   );
 }

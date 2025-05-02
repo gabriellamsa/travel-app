@@ -43,11 +43,8 @@ export default function Navbar() {
             <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
               {[
                 { href: "/", label: "Home" },
-                { href: "/trips", label: "My Trips" },
-                { href: "/itinerary", label: "Itinerary" },
-                { href: "/bookings", label: "Bookings" },
                 { href: "/recommendations", label: "Recommendations" },
-                { href: "/calendar", label: "Calendar" },
+                { href: "/maps", label: "Maps" },
               ].map((item) => (
                 <Link key={item.href} href={item.href} legacyBehavior>
                   <a className="text-[var(--nomadoo-primary)] hover:text-[#005c8e] text-sm lg:text-base transition-colors duration-200">
@@ -95,11 +92,8 @@ export default function Navbar() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {[
                 { href: "/", label: "Home" },
-                { href: "/trips", label: "My Trips" },
-                { href: "/itinerary", label: "Itinerary" },
-                { href: "/bookings", label: "Bookings" },
                 { href: "/recommendations", label: "Recommendations" },
-                { href: "/calendar", label: "Calendar" },
+                { href: "/maps", label: "Maps" },
               ].map((item) => (
                 <Link key={item.href} href={item.href} legacyBehavior>
                   <a className="block px-3 py-2 rounded-md text-base font-medium text-[var(--nomadoo-primary)] hover:text-[#005c8e] hover:bg-[#c0dfea] transition-colors duration-200">
