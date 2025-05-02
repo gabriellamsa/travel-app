@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+:root {
+  --nomadoo-primary: #0089cc;
+  --nomadoo-light: #dff5ff;
+}
