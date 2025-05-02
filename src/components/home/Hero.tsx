@@ -9,14 +9,14 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-16">
         <div className="md:w-1/2 text-center md:text-left">
           <h1 className="text-4xl lg:text-5xl font-bold text-[var(--nomadoo-primary)] mb-8">
-            Plan your trip, the smart way.
+            Your journey starts here.
           </h1>
           <p className="text-lg text-[#453B37] mb-10">
-            Nomadoo is your all-in-one travel planner. From flights and hotels
-            to daily itineraries, keep your entire journey organized in one
-            place.
+            Say goodbye to messy plans and scattered bookings. With Nomadoo, you
+            can organize flights, stays, activities, and itineraries — all in
+            one smart, simple place.
           </p>
-          <Link href="/trips">
+          <Link href="/login">
             <span className="inline-block bg-[var(--nomadoo-primary)] hover:bg-[#005c8e] text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-200 cursor-pointer">
               Start Planning
             </span>
