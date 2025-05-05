@@ -10,7 +10,7 @@ export default function Hero() {
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   return (
-    <section className="bg-white w-full py-20 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white w-full pt-32 pb-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between gap-16">
         <div className="md:w-1/2 text-center md:text-left">
           <h1 className="text-4xl lg:text-5xl font-bold text-[var(--nomadoo-primary)] mb-8">
