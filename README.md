@@ -13,28 +13,79 @@ Nomadoo aims to simplify the travel planning process by eliminating the need to 
 - Calendar synchronization
 - Smart notifications
 - Activity recommendations storage and categorization
+- Interactive map integration with Mapbox
+- User authentication and profile management
+
+## Mapbox Integration
+
+### Features
+
+- Interactive world map for trip planning
+- Location search and geocoding
+
+### Getting Started with Mapbox
+
+Set up your Mapbox access token in the environment variables:
+
+```bash
+NEXT_PUBLIC_MAPBOX_TOKEN=your_mapbox_token_here
+```
 
 ## Development Status
 
 🚧 **This project is currently under development. The features and implementation details are subject to change as the project evolves.**
 
+## Technology Stack
+
+### Core Technologies
+
+- Next.js 15.2.4
+- React 19
+- TypeScript
+- Tailwind CSS
+
+## Project Structure
+
+```
+src/
+├── app/          # Next.js app directory
+├── components/   # Reusable UI components
+├── pages/        # Page components
+├── config/       # Configuration files
+└── types/        # TypeScript type definitions
+```
+
 ## Getting Started
 
-```bash
-# Install dependencies
-npm install
+1. Clone the repository
+2. Install dependencies:
 
-# Run the development server
+```bash
+npm install
+```
+
+3. Set up environment variables:
+
+```bash
+# Create a .env file with the following variables
+NEXT_PUBLIC_MAPBOX_TOKEN=your_mapbox_token_here
+# Add other required environment variables
+```
+
+4. Run the development server:
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-## Technology Stack
+## Development Commands
 
-- Next.js
-- TypeScript
-- Tailwind CSS
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
 ## Future Plans
 
