@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={`${font.className} antialiased`}>
         <div className="min-h-screen flex flex-col">
           <Navbar />
-          <main>{children}</main>
+          <main className="flex-1">{children}</main>
         </div>
       </body>
     </html>

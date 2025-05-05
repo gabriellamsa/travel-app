@@ -15,10 +15,10 @@ interface ResponsiveNavProps {
 
 export default function ResponsiveNav({ onToggleModal }: ResponsiveNavProps) {
   return (
-    <div className="hidden md:flex items-center justify-between space-x-6">
-      <ul className="flex items-center space-x-6">
+    <div className="hidden md:flex items-center justify-between space-x-6 h-full">
+      <ul className="flex items-center space-x-6 h-full">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={link.href} className="h-full flex items-center">
             <Link
               href={link.href}
               className="text-[var(--nomadoo-primary)] hover:text-[#005c8e] text-sm lg:text-base transition-colors duration-200"
@@ -31,7 +31,7 @@ export default function ResponsiveNav({ onToggleModal }: ResponsiveNavProps) {
 
       <button
         onClick={onToggleModal}
-        className="p-2 rounded-full text-[var(--nomadoo-primary)] hover:text-[#005c8e] hover:bg-[#c0dfea] transition-colors duration-200"
+        className="p-2 rounded-full text-[var(--nomadoo-primary)] hover:text-[#005c8e] hover:bg-[#c0dfea] transition-colors duration-200 flex items-center justify-center"
         aria-label="Sign In"
       >
         <User className="h-6 w-6" />

@@ -22,17 +22,17 @@ export default function MobileNav({ onToggleModal }: MobileNavProps) {
   };
 
   return (
-    <div className="flex items-center space-x-2 md:hidden">
+    <div className="flex items-center space-x-2 md:hidden h-full">
       <button
         onClick={onToggleModal}
-        className="p-2 rounded-full text-[var(--nomadoo-primary)] hover:text-[#005c8e] hover:bg-[#c0dfea] transition-colors duration-200"
+        className="p-2 rounded-full text-[var(--nomadoo-primary)] hover:text-[#005c8e] hover:bg-[#c0dfea] transition-colors duration-200 flex items-center justify-center"
         aria-label="Sign In"
       >
         <User className="h-6 w-6" />
       </button>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="p-2 rounded-md text-[var(--nomadoo-primary)] hover:text-[#005c8e] hover:bg-[#c0dfea] transition-colors duration-200"
+        className="p-2 rounded-md text-[var(--nomadoo-primary)] hover:text-[#005c8e] hover:bg-[#c0dfea] transition-colors duration-200 flex items-center justify-center"
         aria-label="Toggle menu"
       >
         {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
