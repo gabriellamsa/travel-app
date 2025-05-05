@@ -47,12 +47,13 @@ export default function Map() {
   const [mapStyle, setMapStyle] = useState(
     "mapbox://styles/mapbox/streets-v11"
   );
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isNavigationOpen, setIsNavigationOpen] = useState(false);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<
+    "search" | "navigation" | "settings" | null
+  >(null);
   const [isLoading, setIsLoading] = useState(true);
   const searchTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
   const marker = useRef<mapboxgl.Marker | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const initializeMap = async (longitude: number, latitude: number) => {
     if (!mapContainer.current) return;
@@ -198,7 +199,7 @@ export default function Map() {
   const handleSuggestionClick = (suggestion: SearchSuggestion) => {
     setSearchQuery(suggestion.place_name);
     setSuggestions([]);
-    setIsSearchOpen(false);
+    setActiveModal(null);
 
     if (map.current) {
       map.current.flyTo({
@@ -243,7 +244,7 @@ export default function Map() {
           .addTo(map.current);
       }
 
-      setIsSearchOpen(false);
+      setActiveModal(null);
       setSuggestions([]);
     } catch (error) {
       console.error("Error searching location:", error);
@@ -258,8 +259,24 @@ export default function Map() {
     );
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        setActiveModal(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full h-[calc(100vh-4rem)] mt-16">
       {isLoading && (
         <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
           <div className="flex flex-col items-center gap-2">
@@ -271,27 +288,36 @@ export default function Map() {
 
       <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
         <button
-          onClick={() => setIsSearchOpen(!isSearchOpen)}
+          onClick={() =>
+            setActiveModal(activeModal === "search" ? null : "search")
+          }
           className="bg-white p-2 rounded-lg shadow-md hover:bg-gray-100"
         >
           <Search className="w-6 h-6 text-gray-600" />
         </button>
         <button
-          onClick={() => setIsNavigationOpen(!isNavigationOpen)}
+          onClick={() =>
+            setActiveModal(activeModal === "navigation" ? null : "navigation")
+          }
           className="bg-white p-2 rounded-lg shadow-md hover:bg-gray-100"
         >
           <Navigation className="w-6 h-6 text-gray-600" />
         </button>
         <button
-          onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+          onClick={() =>
+            setActiveModal(activeModal === "settings" ? null : "settings")
+          }
           className="bg-white p-2 rounded-lg shadow-md hover:bg-gray-100"
         >
           <Settings className="w-6 h-6 text-gray-600" />
         </button>
       </div>
 
-      {isSearchOpen && (
-        <div className="absolute top-4 left-16 z-10 bg-white p-4 rounded-lg shadow-md">
+      {activeModal === "search" && (
+        <div
+          ref={modalRef}
+          className="absolute top-4 left-16 z-10 bg-white p-4 rounded-lg shadow-md"
+        >
           <div className="flex flex-col gap-2">
             <div className="flex gap-2">
               <input
@@ -329,8 +355,11 @@ export default function Map() {
         </div>
       )}
 
-      {isNavigationOpen && currentLocation && (
-        <div className="absolute top-4 left-16 z-10 bg-white p-4 rounded-lg shadow-md">
+      {activeModal === "navigation" && currentLocation && (
+        <div
+          ref={modalRef}
+          className="absolute top-4 left-16 z-10 bg-white p-4 rounded-lg shadow-md"
+        >
           <h3 className="font-semibold mb-2 flex items-center gap-2">
             <MapPin className="w-5 h-5 text-red-500" />
             Your Location
@@ -352,8 +381,11 @@ export default function Map() {
         </div>
       )}
 
-      {isSettingsOpen && (
-        <div className="absolute top-4 left-16 z-10 bg-white p-4 rounded-lg shadow-md">
+      {activeModal === "settings" && (
+        <div
+          ref={modalRef}
+          className="absolute top-4 left-16 z-10 bg-white p-4 rounded-lg shadow-md"
+        >
           <h3 className="font-semibold mb-2">Map Settings</h3>
           <button
             onClick={toggleMapStyle}
