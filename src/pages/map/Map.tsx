@@ -259,7 +259,7 @@ export default function Map() {
   };
 
   return (
-    <div className="relative w-full h-[500px] rounded-lg shadow-md">
+    <div className="relative w-full h-screen">
       {isLoading && (
         <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
           <div className="flex flex-col items-center gap-2">

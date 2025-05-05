@@ -6,7 +6,7 @@ import { User } from "lucide-react";
 const links = [
   { href: "/", label: "Home" },
   { href: "/recommendations", label: "Recommendations" },
-  { href: "/maps", label: "Maps" },
+  { href: "/map", label: "Maps" },
 ];
 
 interface ResponsiveNavProps {
