@@ -88,44 +88,39 @@ export default function Search({
         activeModal === "search" ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      <div className="bg-white h-full w-[350px] shadow-lg">
+      <div className="bg-white h-full w-[350px] shadow-lg flex flex-col">
         <div
           className="w-full h-1 bg-gray-200 rounded-full mx-auto my-2 cursor-pointer"
           onClick={() => setActiveModal(null)}
         />
-        <div className="px-4 pb-4">
-          <div className="flex flex-col gap-2">
-            <div className="flex gap-2">
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => handleSearchInput(e.target.value)}
-                placeholder="Search address..."
-                className="flex-1 px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button
-                onClick={handleSearch}
-                className="bg-blue-500 text-white px-6 py-3 rounded-xl hover:bg-blue-600 transition-colors flex items-center gap-2"
+        <div className="px-4 pb-4 flex-1 flex flex-col">
+          <div className="flex gap-2 mb-4">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => handleSearchInput(e.target.value)}
+              placeholder="Search address..."
+              className="flex-1 px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              onClick={handleSearch}
+              className="bg-blue-500 text-white px-6 py-3 rounded-xl hover:bg-blue-600 transition-colors flex items-center gap-2"
+            >
+              <SearchIcon size={18} />
+            </button>
+          </div>
+
+          <div className="flex-1 overflow-y-auto">
+            {suggestions.map((suggestion) => (
+              <div
+                key={suggestion.id}
+                onClick={() => handleSuggestionClick(suggestion)}
+                className="p-3 hover:bg-gray-50 cursor-pointer border-b last:border-b-0"
               >
-                <SearchIcon size={18} />
-              </button>
-            </div>
-            {suggestions.length > 0 && (
-              <div className="mt-2 bg-white rounded-xl shadow-lg max-h-[calc(100vh-200px)] overflow-y-auto">
-                {suggestions.map((suggestion) => (
-                  <div
-                    key={suggestion.id}
-                    onClick={() => handleSuggestionClick(suggestion)}
-                    className="p-3 hover:bg-gray-50 cursor-pointer border-b last:border-b-0"
-                  >
-                    <p className="font-medium">{suggestion.text}</p>
-                    <p className="text-sm text-gray-500">
-                      {suggestion.place_name}
-                    </p>
-                  </div>
-                ))}
+                <p className="font-medium">{suggestion.text}</p>
+                <p className="text-sm text-gray-500">{suggestion.place_name}</p>
               </div>
-            )}
+            ))}
           </div>
         </div>
       </div>
