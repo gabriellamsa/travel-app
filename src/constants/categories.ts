@@ -1,4 +1,4 @@
-import { LucideIcon, Utensils, TreePine, Hotel, ShoppingBag, Landmark, Fuel, Pill, ShoppingCart, CreditCard } from 'lucide-react';
+import { LucideIcon, Utensils, TreePine, Hotel, ShoppingBag, Landmark, Fuel, ShoppingCart, CreditCard } from 'lucide-react';
 
 export interface Category {
   id: string;
@@ -13,7 +13,6 @@ export const CATEGORIES: Category[] = [
   { id: "shop", label: "Shops", icon: ShoppingBag },
   { id: "museum", label: "Museums", icon: Landmark },
   { id: "gas_station", label: "Gas Stations", icon: Fuel },
-  { id: "pharmacy", label: "Pharmacies", icon: Pill },
   { id: "supermarket", label: "Supermarkets", icon: ShoppingCart },
   { id: "atm", label: "ATMs", icon: CreditCard },
 ]; 
