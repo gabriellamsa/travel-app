@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { Search as SearchIcon } from "lucide-react";
 
 interface SearchSuggestion {
@@ -25,9 +25,9 @@ export default function Search({
 }: SearchProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState<SearchSuggestion[]>([]);
-  const searchTimeout = useRef<NodeJS.Timeout | undefined>(undefined);
+  const searchTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  const handleSearchInput = useCallback((value: string) => {
+  const handleSearchInput = useCallback(async (value: string) => {
     setSearchQuery(value);
 
     if (searchTimeout.current) {
@@ -62,6 +62,7 @@ export default function Search({
         }
       } catch (error) {
         console.error("Error fetching suggestions:", error);
+        setSuggestions([]);
       }
     }, 300);
   }, []);
@@ -71,6 +72,15 @@ export default function Search({
     onSearch(searchQuery);
     setSuggestions([]);
   }, [searchQuery, onSearch]);
+
+  const handleSuggestionClick = useCallback(
+    (suggestion: SearchSuggestion) => {
+      onSuggestionClick(suggestion);
+      setSearchQuery(suggestion.place_name);
+      setSuggestions([]);
+    },
+    [onSuggestionClick]
+  );
 
   return (
     <div
@@ -105,11 +115,7 @@ export default function Search({
                 {suggestions.map((suggestion) => (
                   <div
                     key={suggestion.id}
-                    onClick={() => {
-                      onSuggestionClick(suggestion);
-                      setSearchQuery(suggestion.place_name);
-                      setSuggestions([]);
-                    }}
+                    onClick={() => handleSuggestionClick(suggestion)}
                     className="p-3 hover:bg-gray-50 cursor-pointer border-b last:border-b-0"
                   >
                     <p className="font-medium">{suggestion.text}</p>

@@ -1,9 +1,9 @@
-import { Utensils, TreePine, Hotel, ShoppingBag, Landmark, Fuel, Pill, ShoppingCart, CreditCard } from 'lucide-react';
+import { LucideIcon, Utensils, TreePine, Hotel, ShoppingBag, Landmark, Fuel, Pill, ShoppingCart, CreditCard } from 'lucide-react';
 
 export interface Category {
   id: string;
   label: string;
-  icon: any; 
+  icon: LucideIcon;
 }
 
 export const CATEGORIES: Category[] = [

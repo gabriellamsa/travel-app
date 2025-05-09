@@ -32,12 +32,6 @@ interface CurrentLocation {
   country: string;
 }
 
-interface Category {
-  id: string;
-  label: string;
-  icon: any;
-}
-
 const LoadingOverlay = () => (
   <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
     <div className="flex flex-col items-center gap-2">
@@ -106,9 +100,6 @@ export default function Map() {
   const [currentLocation, setCurrentLocation] =
     useState<CurrentLocation | null>(null);
   const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
-  const [mapStyle, setMapStyle] = useState(
-    "mapbox://styles/mapbox/streets-v11"
-  );
   const [activeModal, setActiveModal] = useState<
     "search" | "navigation" | "settings" | null
   >(null);
@@ -181,7 +172,7 @@ export default function Map() {
       try {
         map.current = new mapboxgl.Map({
           container: mapContainer.current,
-          style: mapStyle,
+          style: "mapbox://styles/mapbox/streets-v11",
           center: [longitude, latitude],
           zoom: 14,
         });
@@ -270,7 +261,7 @@ export default function Map() {
         console.error("Error initializing map:", error);
       }
     },
-    [mapStyle, places]
+    [places]
   );
 
   const handleSearch = useCallback(async (query: string) => {
