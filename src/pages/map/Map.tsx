@@ -3,25 +3,9 @@
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useEffect, useRef, useState, useCallback } from "react";
-import {
-  Search,
-  Navigation,
-  Info,
-  Loader2,
-  Utensils,
-  TreePine,
-  Hotel,
-  ShoppingBag,
-  Landmark,
-  Fuel,
-  Pill,
-  ShoppingCart,
-  CreditCard,
-  ChevronUp,
-  ChevronDown,
-  Compass,
-} from "lucide-react";
+import { Search, Navigation, Info, Loader2, Compass } from "lucide-react";
 import SearchComponent from "./Search";
+import { CategoriesPanel } from "./Categories";
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
 
@@ -53,18 +37,6 @@ interface Category {
   label: string;
   icon: any;
 }
-
-const CATEGORIES: Category[] = [
-  { id: "restaurant", label: "Restaurants", icon: Utensils },
-  { id: "park", label: "Parks", icon: TreePine },
-  { id: "hotel", label: "Hotels", icon: Hotel },
-  { id: "shop", label: "Shops", icon: ShoppingBag },
-  { id: "museum", label: "Museums", icon: Landmark },
-  { id: "gas_station", label: "Gas Stations", icon: Fuel },
-  { id: "pharmacy", label: "Pharmacies", icon: Pill },
-  { id: "supermarket", label: "Supermarkets", icon: ShoppingCart },
-  { id: "atm", label: "ATMs", icon: CreditCard },
-];
 
 const LoadingOverlay = () => (
   <div className="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center z-50">
@@ -126,91 +98,6 @@ const LocationButton = ({
   >
     <Navigation className="w-5 h-5 text-gray-600" />
   </button>
-);
-
-const CategoriesPanel = ({
-  isPanelVisible,
-  isPanelExpanded,
-  setIsPanelVisible,
-  setIsPanelExpanded,
-  selectedCategory,
-  setSelectedCategory,
-  currentLocation,
-  searchNearbyPlaces,
-}: {
-  isPanelVisible: boolean;
-  isPanelExpanded: boolean;
-  setIsPanelVisible: (visible: boolean) => void;
-  setIsPanelExpanded: (expanded: boolean) => void;
-  selectedCategory: string | null;
-  setSelectedCategory: (category: string | null) => void;
-  currentLocation: CurrentLocation | null;
-  searchNearbyPlaces: (category: string, coordinates: [number, number]) => void;
-}) => (
-  <div
-    className={`absolute bottom-0 left-0 right-0 z-10 transition-all duration-300 ease-in-out ${
-      isPanelVisible ? "translate-y-0" : "translate-y-full"
-    }`}
-  >
-    <div className="bg-white rounded-t-2xl shadow-lg">
-      <div
-        className="w-full h-1 bg-gray-200 rounded-full mx-auto my-2 cursor-pointer"
-        onClick={() => {
-          if (isPanelExpanded) {
-            setIsPanelExpanded(false);
-          } else {
-            setIsPanelVisible(false);
-          }
-        }}
-      />
-      <div className="px-4 pb-2 flex justify-between items-center">
-        <h3 className="font-semibold text-lg">What are you looking for?</h3>
-        <button
-          onClick={() => {
-            if (isPanelExpanded) {
-              setIsPanelExpanded(false);
-            } else {
-              setIsPanelVisible(false);
-            }
-          }}
-          className="p-2 rounded-full hover:bg-gray-100"
-        >
-          {isPanelExpanded ? (
-            <ChevronDown className="w-5 h-5 text-gray-600" />
-          ) : (
-            <ChevronUp className="w-5 h-5 text-gray-600" />
-          )}
-        </button>
-      </div>
-      <div
-        className={`px-4 pb-4 transition-all duration-300 ease-in-out ${
-          isPanelExpanded ? "max-h-[60vh]" : "max-h-[200px]"
-        } overflow-y-auto`}
-      >
-        <div className="grid grid-cols-3 gap-3">
-          {CATEGORIES.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => {
-                setSelectedCategory(category.id);
-                if (currentLocation) {
-                  searchNearbyPlaces(category.id, currentLocation.coordinates);
-                }
-              }}
-              className={`flex flex-col items-center gap-2 p-3 rounded-xl ${
-                selectedCategory === category.id
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-50 hover:bg-gray-100"
-              }`}
-            >
-              <category.icon className="w-6 h-6" />
-              <span className="text-xs text-center">{category.label}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
 );
 
 export default function Map() {
