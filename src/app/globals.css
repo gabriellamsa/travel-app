@@ -4,3 +4,84 @@
   --nomadoo-primary: #0089cc;
   --nomadoo-light: #dff5ff;
 }
+
+/* dashboard */
+.dashboardContainer {
+  min-height: calc(100vh - 64px);
+  padding: 2rem 2rem 2rem 5rem;
+  background: white;
+  margin-top: 64px;
+}
+
+.dashboardHeader,
+.dashboardSection {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboardHeader h1,
+.dashboardSection h2,
+.tripCard h3 {
+  color: var(--nomadoo-primary);
+  margin-bottom: 0.5rem;
+}
+
+.dashboardHeader h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+.dashboardSection h2 {
+  font-size: 1.4rem;
+}
+.tripCard h3 {
+  font-size: 1.1rem;
+}
+
+.userInfo {
+  font-size: 1.1rem;
+  color: var(--nomadoo-primary);
+}
+
+.tripsGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.tripCard {
+  background: var(--nomadoo-light);
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--nomadoo-primary);
+  transition: transform 0.2s ease;
+}
+
+.tripCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tripCard p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding: 1rem;
+  }
+  .dashboardHeader {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+}
