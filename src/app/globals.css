@@ -9,16 +9,16 @@
 .dashboardContainer {
   min-height: calc(100vh - 64px);
   padding: 2rem 2rem 2rem 5rem;
-  background: white;
+  background: #f8fafc;
   margin-top: 64px;
 }
 
 .dashboardHeader,
 .dashboardSection {
   background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .dashboardHeader {
@@ -26,6 +26,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  border: 1px solid #f1f5f9;
 }
 
 .dashboardHeader h1,
@@ -38,40 +39,49 @@
 .dashboardHeader h1 {
   font-size: 1.8rem;
   margin: 0;
+  font-weight: 600;
 }
+
 .dashboardSection h2 {
   font-size: 1.4rem;
+  font-weight: 600;
+  color: #1e293b;
 }
+
 .tripCard h3 {
   font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
 }
 
 .userInfo {
   font-size: 1.1rem;
-  color: var(--nomadoo-primary);
+  color: #64748b;
+  font-weight: 500;
 }
 
 .tripsGrid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .tripCard {
-  background: var(--nomadoo-light);
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--nomadoo-primary);
-  transition: transform 0.2s ease;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #f1f5f9;
+  transition: all 0.2s ease;
 }
 
 .tripCard:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-color: #e2e8f0;
 }
 
 .tripCard p {
-  color: #666;
+  color: #64748b;
   font-size: 0.9rem;
 }
 
@@ -83,5 +93,8 @@
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+  }
+  .tripsGrid {
+    grid-template-columns: 1fr;
   }
 }
